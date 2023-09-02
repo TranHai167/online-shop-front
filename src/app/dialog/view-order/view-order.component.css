@@ -1,0 +1,11 @@
+button {
+  margin-right: 8px;
+}
+
+.dialog {
+  position: fixed; /* Position the modal relative to the viewport */
+  top: 50%; /* Move the top edge of the modal to the vertical center of the viewport */
+  left: 50%; /* Move the left edge of the modal to the horizontal center of the viewport */
+  transform: translate(-50%, -50%); /* Center the modal exactly */
+  z-index: 1000;
+}

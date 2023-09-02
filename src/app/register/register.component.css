@@ -1,0 +1,24 @@
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.registration-form {
+  background-color: #f5f5f5;
+  padding: 125px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 450px;
+  text-align: center;
+}
+
+.registration-form h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  text-align: left;
+}

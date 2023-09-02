@@ -1,0 +1,33 @@
+<p>
+  <a routerLink="/admin/product/new" class="btn btn-primary"> New Product</a>
+</p>
+<p>
+  <input
+    #query
+    (keyup)="filter(query.value)"
+    type="text" class="form-control" placeholder="Search..."
+  >
+</p>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Item</th>
+    <th>Price</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let p of filteredProducts">
+    <td>
+      <img class="circle-image" src="{{p.imageUrl}}" width="60" height="60" style="margin-right: 20px">
+
+      {{ p.title.toLocaleUpperCase() }}
+    </td>
+    <td>${{ p.price }}</td>
+    <td>
+      <a [routerLink]="['/admin/product/', p.id]">Edit</a>
+    </td>
+  </tr>
+  </tbody>
+</table>

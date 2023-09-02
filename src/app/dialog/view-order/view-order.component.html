@@ -1,0 +1,38 @@
+<div class="dialog">
+  <div class="card" *ngIf="orderPlaced$ | async as orders" style="width: 100%">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Product</th>
+        <th class="text-center" style="padding-left: 40px">Quantity</th>
+        <th class="text-right" style="padding-left: 40px">Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of orders">
+        <td *ngIf="item.quantity">
+          {{ item.product?.title }}
+        </td>
+        <td *ngIf="item.quantity" style="padding-left: 40px">
+          {{ item.quantity }}
+        </td>
+        <td *ngIf="item.quantity" class="text-right" style="padding-left: 40px">
+          {{ getItemPrice(item) | currency:'USD':true }}
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th style="padding-left: 40px" class="text-right">{{ getTotalPrice(orders) | currency:'USD':true }}</th>
+      </tr>
+      </tfoot>
+    </table>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+    </div>
+  </div>
+</div>
+
+

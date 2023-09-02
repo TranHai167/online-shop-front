@@ -1,0 +1,57 @@
+<div class="registration-container">
+  <form class="registration-form" (ngSubmit)="onSubmit()">
+    <h2>Register New User</h2>
+    <div class="form-group">
+      <input #email="ngModel" type="email" placeholder="Email" id="email" name="email" [(ngModel)]="user.email" required [disabled]="fulfill">
+      <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input #password="ngModel"  type="password" id="password" placeholder="Password" name="password" [(ngModel)]="user.password" required minlength="6" [disabled]="fulfill">
+      <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+        <div *ngIf="password.errors?.['required']">Password is required and 6 characters for minimum</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input #name="ngModel" type="text" id="name" placeholder="Name" name="name" [(ngModel)]="user.name" required [disabled]="fulfill">
+      <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+        <div *ngIf="name.errors?.['required']">Name is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input #role="ngModel" type="text" id="role" placeholder="Role" name="role" [(ngModel)]="user.role" required [disabled]="fulfill">
+      <div class="alert alert-danger" *ngIf="role.touched && role.invalid">
+        <div *ngIf="role.errors?.['required']">Role is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input #phone="ngModel" type="text" id="phone" placeholder="Phone number" name="role" [(ngModel)]="user.phone" required [disabled]="fulfill">
+      <div class="alert alert-danger" *ngIf="phone.touched && phone.invalid">
+        <div *ngIf="phone.errors?.['required']">Phone number is required.</div>
+      </div>
+    </div>
+
+    <button type="button" *ngIf="!optRequired" (click)="sendOtp()">Register</button>
+    <div class="alert alert-danger" *ngIf="optRequired && !fulfill">
+      <div> Please fill all the field! </div>
+    </div>
+
+    <div class="form-group" *ngIf="optRequired">
+      <otp-comp style="text-align: center">
+      </otp-comp>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <p>
+        Already have account?
+      </p>
+      <a type="button" style="color: blue" routerLink="/">Sign in</a>
+    </div>
+
+  </form>
+</div>

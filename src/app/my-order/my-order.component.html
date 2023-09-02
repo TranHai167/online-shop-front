@@ -1,0 +1,23 @@
+<h1>My Orders</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Customer</th>
+    <th>Address</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of orders">
+    <td>{{ order.shipping.name }}</td>
+    <td>{{ order.shipping.addressLine1 }}</td>
+    <td>{{ order.orderDate | date}}</td>
+    <td>
+      <a
+        (click)="openDialog(order.orderId)"
+        style="cursor: pointer; color: blue"
+      >View</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
