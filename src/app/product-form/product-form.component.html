@@ -32,15 +32,17 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 10px">
         <label for="imageUrl">ImageUrl</label>
         <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl"  name="imageUrl" id="imageUrl" type="text" class="form-control" required>
       </div>
       <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
         ImageUrl is required
       </div>
-      <button class="btn btn-primary"> Save</button>
-      <button type="button" (click)="deleteProduct()" class="btn btn-danger"> Delete </button>
+      <div style="margin-top: 10px">
+        <button class="btn btn-primary"> Save </button>
+        <button type="button" (click)="deleteProduct()" class="btn btn-danger"> Delete </button>
+      </div>
     </form>
   </div>
   <div class="col-md-6">

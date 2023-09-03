@@ -28,11 +28,6 @@ export class AuthService {
     return !!token; // Return true if the token exists; otherwise, return false
   }
 
-  // @ts-ignore
-  get appUser$() {
-
-  }
-
   login(credentials: any): Observable<HttpResponse<AuthResponse>> {
     return this.httpClient.post<HttpResponse<AuthResponse>>("http://localhost:8080/authenticate", credentials);
   }
@@ -43,6 +38,18 @@ export class AuthService {
     userId = localStorage.getItem('cartId');
     const params = new HttpParams()
       .set('userId', userId);
-    return this.httpClient.get<AppUser>("http://localhost:8080/authenticate/get-user", {params})
+    return this.httpClient.get<AppUser>("http://localhost:8080/authenticate/get-user", {params});
+  }
+
+  verifyOtp(otpNumber: string) {
+    return this.httpClient.post<boolean>("http://localhost:8080/authenticate/verify-otp", otpNumber);
+  }
+
+  createOtp(phoneNumber: string) {
+    return this.httpClient.post("http://localhost:8080/authenticate/create-otp", phoneNumber);
+  }
+
+  register(user: any) {
+    return this.httpClient.post<AuthResponse>("http://localhost:8080/authenticate/register", user);
   }
 }

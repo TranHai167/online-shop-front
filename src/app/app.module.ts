@@ -41,6 +41,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AuthGuard} from "./services/auth-guard.service";
 import { RegisterComponent } from './register/register.component';
 import { OtpComponent } from './otp/otp.component';
+import {FlexModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -65,38 +66,39 @@ import { OtpComponent } from './otp/otp.component';
     RegisterComponent,
     OtpComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule.forRoot([
-      {path: '', component: ProductsComponent, canActivate: [AuthGuard]},
-      {path: 'login', component: LoginComponent},
-      {path: 'register', component: RegisterComponent},
-      {path: 'shopping-cart', component: ShoppingCartComponent, canActivate: [AuthGuard]},
-      {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
-      {path: 'order-success/:id', component: OrderSuccessComponent},
-      {path: 'my-order', component: MyOrderComponent},
-      {path: 'admin/product/new', component: ProductFormComponent, canActivate: [AuthGuard]},
-      {path: 'admin/product/:id', component: ProductFormComponent, canActivate: [AuthGuard]},
-      {path: 'admin/product', component: AdminProductsComponent, canActivate: [AuthGuard]},
-      {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard]},
-    ]),
-    HttpClientModule,
-    FormsModule,
-    NgbDropdown,
-    NgbDropdownToggle,
-    NgbDropdownMenu,
-    MatDialogModule,
-    MatButtonModule,
-    MatInputModule,
-    MatDatepickerModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    NgIf,
-    JsonPipe,
-    MatNativeDateModule,
-    BrowserAnimationsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterModule.forRoot([
+            {path: '', component: ProductsComponent, canActivate: [AuthGuard]},
+            {path: 'login', component: LoginComponent},
+            {path: 'register', component: RegisterComponent},
+            {path: 'shopping-cart', component: ShoppingCartComponent, canActivate: [AuthGuard]},
+            {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
+            {path: 'order-success/:id', component: OrderSuccessComponent},
+            {path: 'my-order', component: MyOrderComponent},
+            {path: 'admin/product/new', component: ProductFormComponent, canActivate: [AuthGuard]},
+            {path: 'admin/product/:id', component: ProductFormComponent, canActivate: [AuthGuard]},
+            {path: 'admin/product', component: AdminProductsComponent, canActivate: [AuthGuard]},
+            {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard]},
+        ]),
+        HttpClientModule,
+        FormsModule,
+        NgbDropdown,
+        NgbDropdownToggle,
+        NgbDropdownMenu,
+        MatDialogModule,
+        MatButtonModule,
+        MatInputModule,
+        MatDatepickerModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        NgIf,
+        JsonPipe,
+        MatNativeDateModule,
+        BrowserAnimationsModule,
+        FlexModule
+    ],
   providers: [AuthService, CategoryService, OrderService, ProductService, ShoppingCartService, UserService],
   bootstrap: [AppComponent]
 })

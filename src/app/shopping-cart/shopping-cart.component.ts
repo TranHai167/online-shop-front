@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ShoppingCartService} from "../services/shopping-cart.service";
 import {Observable} from "rxjs";
 import {ShoppingCart} from "../models/shopping-cart";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,13 +13,18 @@ export class ShoppingCartComponent implements OnInit {
   // @ts-ignore
   cart$: Observable<ShoppingCart>;
 
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor(private shoppingCartService: ShoppingCartService,
+              private router: Router) { }
 
   async ngOnInit() {
     this.cart$ = await this.shoppingCartService.getCart();
   }
 
   clearCart() {
-    // this.shoppingCartService.clearCart();
+    this.shoppingCartService.clearShoppingCart().subscribe();
+    this.router.navigate(['/']).then(() => {
+      // Reload the current page
+      window.location.reload()
+    });
   }
 }

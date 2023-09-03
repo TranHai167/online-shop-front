@@ -7,8 +7,13 @@ Fill code we sent to your phone to continue!
   <input type="text" class="otp-input" maxlength="1" id="otp5" #otp4 (input)="foCusInput()">
   <input type="text" class="otp-input" maxlength="1" id="otp6" #otp5 (input)="foCusInput()">
 </div>
+
+<div class="alert alert-danger" *ngIf="clickFail">
+  <div> Otp code is incorrect! </div>
+</div>
+
 <div class="centered-button">
-  <button type="button">Complete</button>
+  <button type="button" (click)="verifyOtp()">Complete</button>
 </div>
 
 

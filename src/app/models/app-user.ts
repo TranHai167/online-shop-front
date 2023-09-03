@@ -1,7 +1,7 @@
 export class AppUser {
   name: string;
-  // email: string;
-  // password: string;
+  email?: string;
+  password?: string;
   admin: boolean = true;
 
   constructor(name: string, isAdmin: boolean) {

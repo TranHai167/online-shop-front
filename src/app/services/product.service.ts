@@ -30,7 +30,6 @@ export class ProductService {
       product: product
     }
 
-    console.log(request);
     return this.httpClient.put("http://localhost:8080/products/update", request);
   }
 

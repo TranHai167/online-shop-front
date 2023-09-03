@@ -40,8 +40,9 @@ export class ShippingFormComponent implements OnInit {
       }
     )).subscribe(
       (res) => {
-        console.log('cart is clear: ' + res);
+        let orderId: string = res ? res : '';
         this.shoppingCartService.clearCart(res).subscribe();
+        this.orderService.sendEmail(orderId, cartId).pipe(take(1)).subscribe()
         this.router.navigate(['/order-success/' + res]).then();
       });
   }

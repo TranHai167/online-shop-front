@@ -81,7 +81,12 @@ export class ShoppingCartService {
     let cartId = localStorage.getItem('cartId');
     if (!cartId) cartId = '';
     let request: UpdateShoppingCartRequest = new UpdateShoppingCartRequest(cartId, product, change);
-    console.log(request);
     return this.httpClient.post<number>("http://localhost:8080/shopping-cart/update-cart", request, httpOptions);
+  }
+
+  clearShoppingCart() {
+    let cartId = localStorage.getItem('cartId');
+    if (!cartId) cartId = '';
+    return this.httpClient.delete(`http://localhost:8080/shopping-cart/clear-shopping-cart/${cartId}`);
   }
 }

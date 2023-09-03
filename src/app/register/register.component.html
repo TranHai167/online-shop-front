@@ -23,26 +23,23 @@
     </div>
 
     <div class="form-group">
-      <input #role="ngModel" type="text" id="role" placeholder="Role" name="role" [(ngModel)]="user.role" required [disabled]="fulfill">
-      <div class="alert alert-danger" *ngIf="role.touched && role.invalid">
-        <div *ngIf="role.errors?.['required']">Role is required.</div>
-      </div>
-    </div>
-
-    <div class="form-group">
       <input #phone="ngModel" type="text" id="phone" placeholder="Phone number" name="role" [(ngModel)]="user.phone" required [disabled]="fulfill">
       <div class="alert alert-danger" *ngIf="phone.touched && phone.invalid">
         <div *ngIf="phone.errors?.['required']">Phone number is required.</div>
       </div>
     </div>
 
-    <button type="button" *ngIf="!optRequired" (click)="sendOtp()">Register</button>
     <div class="alert alert-danger" *ngIf="optRequired && !fulfill">
       <div> Please fill all the field! </div>
     </div>
+    <button type="button" *ngIf="!fulfill" (click)="sendOtp()">Register</button>
 
-    <div class="form-group" *ngIf="optRequired">
-      <otp-comp style="text-align: center">
+    <div class="form-group" *ngIf="optRequired && fulfill">
+      <otp-comp
+        style="text-align: center"
+        [user] = user
+        [phoneNumber] = user.phone
+      >
       </otp-comp>
     </div>
 

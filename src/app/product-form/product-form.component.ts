@@ -31,18 +31,26 @@ export class ProductFormComponent {
   }
 
   save(product: any) {
-    if (this.id) this.productService.updateProduct(this.id, this.product);
-    else {
-      this.productService.create(product);
+    if (this.id) {
+      this.productService.updateProduct(this.id, this.product).subscribe();
+    } else {
+      console.log(JSON.stringify(product));
+      this.productService.create(product).subscribe();
     }
 
-    this.router.navigate(['/admin/product']);
+    this.router.navigate(['/admin/product']).then(() => {
+      // Reload the current page
+      window.location.reload()
+    });
   }
 
   deleteProduct() {
     if (confirm('Are you sure to delete this product ?')) {
-      this.productService.delete(this.id);
-      this.router.navigate(['/admin/product']);
+      this.productService.delete(this.id).subscribe();
+      this.router.navigate(['/admin/product']).then(() => {
+        // Reload the current page
+        window.location.reload()
+      });
     }
   }
 

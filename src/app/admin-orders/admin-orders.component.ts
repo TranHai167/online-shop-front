@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import {OrderService} from "../services/order.service";
 import {ViewOrderComponent} from "../dialog/view-order/view-order.component";
 import {MatDialog} from "@angular/material/dialog";
-import {filter, take} from "rxjs/operators";
+import { take } from "rxjs/operators";
 import {FormControl, FormGroup} from "@angular/forms";
+import {Order} from "../models/order";
 
 @Component({
   selector: 'app-admin-orders',
@@ -11,19 +12,23 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./admin-orders.component.css']
 })
 export class AdminOrdersComponent {
-  orders$;
+  order: Order[] = [];
+  customerTerm: string = '';
+  addressTerm: string = '';
+  phoneNumberTerm: string = '';
 
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
 
-  constructor(
+  constructor
+  (
     private orderService: OrderService,
     public dialog: MatDialog
   )
   {
-    this.orders$ = orderService.getAdminOrders().pipe(take(1));
+    orderService.getAdminOrders().pipe(take(1)).subscribe((order) => this.order = order);
   }
 
   openDialog(orderId: string | undefined): void {
@@ -32,7 +37,34 @@ export class AdminOrdersComponent {
     });
   }
 
-  filter(query: string) {
+  onPhoneNumberInputChange(event: any) {
+    const searchTerm = event.target.value;
+    this.phoneNumberTerm = searchTerm;
+    this.orderService.searchFieldsFunction(this.customerTerm, this.addressTerm, searchTerm, this.range.get('start')?.value?.getTime(), this.range.get('end')?.value?.getTime()).subscribe(
+      (order) => this.order = order
+    )
+  }
 
+  onAddressInputChange(event: any) {
+    const searchTerm = event.target.value;
+    this.addressTerm = searchTerm;
+    this.orderService.searchFieldsFunction(this.customerTerm, searchTerm, this.phoneNumberTerm, this.range.get('start')?.value?.getTime(), this.range.get('end')?.value?.getTime()).subscribe(
+      (order) => this.order = order
+    )
+  }
+
+  onCustomerInputChange(event: any) {
+    const searchTerm = event.target.value;
+    this.customerTerm = searchTerm;
+    this.orderService.searchFieldsFunction(searchTerm, this.addressTerm, this.phoneNumberTerm, this.range.get('start')?.value?.getTime(), this.range.get('end')?.value?.getTime()).subscribe(
+    (order) => this.order = order
+    )
+  }
+
+  onDateChange() {
+    console.log('date changed');
+    this.orderService.searchFieldsFunction(this.customerTerm, this.addressTerm, this.phoneNumberTerm, this.range.get('start')?.value?.getTime(), this.range.get('end')?.value?.getTime())
+      .subscribe((order) => this.order = order
+    )
   }
 }
