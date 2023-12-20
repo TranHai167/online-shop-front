@@ -1,24 +1,36 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {RegisterComponent} from "../register/register.component";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit {
   // @ts-ignore
   password: string;
+  isFocused: boolean = false;
   // @ts-ignore
   email: string;
   failAuthentication: boolean = false;
+  height: string = '';
+  // @ts-ignore
+  @ViewChild('contentContainer', { static: true }) contentContainer: ElementRef;
 
   constructor(
     private authService: AuthService,
     private router: Router,
+    public dialog: MatDialog
   ) {
 
+  }
+
+  ngAfterViewInit() {
+    let divHeight = this.contentContainer.nativeElement.offsetHeight;
+    this.height = (divHeight - 250 - 5) + 'px';
   }
 
   onSubmit() {
@@ -48,5 +60,15 @@ export class LoginComponent {
 
   reauthorize() {
     this.failAuthentication = false;
+  }
+
+  focusing() {
+    this.isFocused = !this.isFocused
+  }
+
+  openRegisterDialog() {
+    const dialogRef = this.dialog.open(RegisterComponent);
+
+    dialogRef.afterClosed().subscribe(result => {});
   }
 }

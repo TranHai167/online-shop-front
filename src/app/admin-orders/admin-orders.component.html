@@ -1,42 +1,35 @@
-<h1>System Orders</h1>
+<h1 style="color: #fff">System Orders</h1>
 <div style="margin-top: 50px; margin-bottom: 40px" fxLayout="row">
-  <div fxFlex="20">
+  <div fxFlex="70">
     <input
       #query1
       (input)="onCustomerInputChange($event)"
       type="text" class="form-control" placeholder="Customer..."
       style="margin-bottom: 20px"
+      fxFlex="20"
     >
-
+    <div fxFlex="3"></div>
     <input
       #query2
       (input)="onAddressInputChange($event)"
       type="text" class="form-control" placeholder="Address..."
       style="margin-bottom: 20px"
+      fxFlex="20"
     >
-  </div>
-  <div fxFlex="10"> </div>
-  <div fxFlex="20">
+
+    <div fxFlex="3"></div>
     <input
       #query3
       (input)="onPhoneNumberInputChange($event)"
       type="text" class="form-control" placeholder="Phone number..."
       style="margin-bottom: 20px"
+      fxFlex="20"
     >
-
-    <mat-form-field>
-      <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input matInput [formGroup]="range" [rangePicker]="picker">
-        <input matStartDate formControlName="start" placeholder="Start date" (dateChange)="onDateChange()">
-        <input matEndDate formControlName="end" placeholder="End date" (dateChange)="onDateChange()">
-      </mat-date-range-input>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-
-      <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-      <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-    </mat-form-field>
   </div>
+</div>
+
+<div>
+
 </div>
 
 <table class="table">

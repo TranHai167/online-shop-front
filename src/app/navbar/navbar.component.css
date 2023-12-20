@@ -23,3 +23,53 @@
   vertical-align: top;
   margin-left: -8px;
 }
+
+.navbar .container .navbar-collapse .nav-item .nav-link {
+  color: rgb(60, 175, 75);
+  width: fit-content;
+
+  height: fit-content;
+  font-weight: bold;
+  font-family: AlfaSlabOneRegular, serif;
+  line-height: 1.375rem;
+  font-size: 1.2rem;
+}
+
+.navbar .container .navbar-collapse .nav-item {
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.navbar .container .navbar-collapse .nav-item .nav-link:hover {
+  color: #ffffff; /* Replace with the desired link color on hover and visited */
+}
+
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+}
+
+.fixed-top {
+  background-image: url("https://cdn.gkitchen.com.vn/images?path=/imageWebReact/all/backgroundMain.jpeg&format=jpeg&width=1200&height=2000");
+}
+
+.dropdown-menu {
+  background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity));
+}
+
+.dropdown-item-custom {
+  display: block;
+  color: rgb(60, 175, 75);
+  width: 100%;
+  padding-left: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.dropdown-item-custom:hover {
+  cursor: pointer;
+  color: #fff;
+}

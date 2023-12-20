@@ -1,0 +1,13 @@
+.decrease {
+  height: 100%;
+  width: 20px;
+  background-image: url("https://gkitchen.com/assets/decrease_default.50b74129.svg");
+}
+
+.modify-quantity {
+  cursor: pointer;
+}
+
+.text-center .quantity {
+  color: #fff;
+}

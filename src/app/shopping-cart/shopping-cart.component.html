@@ -1,5 +1,5 @@
-<h1>Shopping Cart</h1>
-<div class="card" *ngIf="cart$ | async as cart" style="width: 80%;">
+<h1 style="color: #fff">Shopping Cart</h1>
+<div class="card" *ngIf="cart" style="width: 100%;">
   <div class="card-body">
     <p>
       You have {{ cart.totalItemsCount }} items in your shopping cart.
@@ -7,7 +7,7 @@
 
     </p>
   </div>
-  <table class="table">
+  <table class="table-section">
     <thead>
     <tr>
       <th></th>
@@ -17,15 +17,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of cart.items">
-      <td *ngIf="item.quantity > 0">
+    <tr *ngFor="let item of cart.items" style="border-radius: 10%;">
+      <td style="padding-left: 10px">
         <div [style.backgroundImage]="'url(' + item.products.imageUrl + ')'" class="thumbnail">
         </div>
       </td>
-      <td *ngIf="item.quantity > 0">
+      <td>
         {{ item.products.title }}
       </td>
-      <td *ngIf="item.quantity > 0">
+      <td>
         <product-quantity
           [product]="item.products"
           [shopping-cart]="cart"
@@ -33,7 +33,7 @@
         >
         </product-quantity>
       </td>
-      <td *ngIf="item.quantity > 0" class="text-right" style="padding-left: 80px">
+      <td class="text-right" style="padding-left: 80px;">
         {{ item.totalPrice | currency:'USD':true }}
       </td>
     </tr>
@@ -47,7 +47,7 @@
     </tr>
     <tr *ngIf="cart.totalPrice > 0">
       <th colspan="4">
-        <a *ngIf="cart.items.length" routerLink="/check-out" class="btn btn-primary">Check Out</a>
+        <a *ngIf="cart.items.length" routerLink="/check-out" class="btn">Check Out</a>
       </th>
     </tr>
     </tfoot>

@@ -5,8 +5,9 @@
 
 
 body {
-  padding-top: 80px;
+  padding-top: 120px;
   margin-left: 0;
+  background-image: url("https://cdn.gkitchen.com.vn/images?path=/imageWebReact/all/backgroundMain.jpeg&format=jpeg&width=1200&height=2000");
 }
 
 html, body { height: 100%; }

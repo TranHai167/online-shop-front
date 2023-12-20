@@ -1,0 +1,17 @@
+.bottom-component {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #3498db;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+}
+
+.custom-container {
+  padding-left: 100px;
+  padding-right: 100px;
+  align-items: center;
+  align-content: center;
+}

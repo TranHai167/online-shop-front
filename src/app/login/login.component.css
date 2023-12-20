@@ -1,17 +1,45 @@
 .login-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 90vh;
+  align-items: flex-start;
+  padding-top: 1vh;
 }
 
 .login-form {
-  background-color: #f5f5f5;
-  padding: 125px;
+  background-color: white;
+  padding: 30px 70px 30px 70px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  width: 450px;
+  width: 400px;
   text-align: center;
+}
+
+.img-container {
+  cursor: pointer;
+  width: 100%;
+  height: 50%;
+  background-image: url("src/assets/background-web.jpg");
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.img-container:hover a {
+  display: block;
+  height: 250px;
+  background: #00000066;
+  width: 100%;
+  color: white;
+  position: relative;
+  z-index: 3;
+  vertical-align: bottom;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Open Sans, sans-serif;
+  transition: all 200ms ease;
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .login-form h2 {
@@ -21,4 +49,164 @@
 .form-group {
   margin-bottom: 10px;
   text-align: left;
+}
+
+.brand-img {
+  width: 160px;
+  height: 100px;
+  margin-bottom: 50px;
+}
+
+input {
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 5px;
+  padding-bottom: 7px;
+  height: 45px;
+}
+
+.login-button {
+  margin-top: 30px;
+  border-radius: 7px;
+  height: 40px;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: large;
+}
+
+.login-icons {
+  padding-top: 10px;
+  display: flex;
+  width: 50%;
+  font-size: x-large;
+  justify-content: space-evenly;
+}
+
+.left-hs {
+  display: block;
+  width: 80%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.accordion {
+  display: flex;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+ul {
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  text-align: center;
+  display: table;
+  table-layout: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  --img-1: url("https://previews.123rf.com/images/zhovba/zhovba1701/zhovba170100041/70460648-still-life-of-a-set-of-dairy-products-on-the-background-of-splash-of-milk-and-the-farmland-rural.jpg?fj=1");
+  --img-2: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCzavDP4ROB_KZppoEec70lOHOMHj4WxnkDQ&usqp=CAU");
+  --img-3: url("https://www.seriouseats.com/thmb/58eWC_rQpUOtLsXxInct-ZZ1sRI=/450x300/filters:no_upscale():max_bytes(150000):strip_icc()/20230713-SEA-Cherries-AmandaSuarez-b8c9b32494e74b20818f47a4e42a499f.jpg");
+
+  &:nth-child(1) {
+     background-image: var(--img-1);
+  }
+
+  &:nth-child(2) {
+   background-image: var(--img-2);
+  }
+
+  &:nth-child(3) {
+   background-image: var(--img-3);
+  }
+
+  width: 30%;
+  height: 250px;
+  display: table-cell;
+  vertical-align: bottom;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  transition: all 500ms ease;
+}
+
+li div {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  word-wrap: break-word; /* Standard property */
+  overflow-wrap: break-word;
+}
+
+li div a {
+  display: block;
+  height: 250px;
+  width: 100%;
+  color: white;
+  position: relative;
+  z-index: 3;
+  vertical-align: bottom;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Open Sans, sans-serif;
+  transition: all 200ms ease;
+}
+
+li div a * {
+  width: 100%;
+  margin: 0;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 5;
+  white-space: nowrap;
+  word-wrap: break-word; /* Standard property */
+  overflow-wrap: break-word;
+  transform: translateX(-20px);
+  transition: all 400ms ease;
+}
+
+li fiv a h2 {
+  font-family: Montserrat, sans-serif;
+  text-overflow: clip;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  top: 160px;
+}
+
+li div a p {
+  top: 100px;
+  font-size: 15px;
+}
+
+li div a * {
+  opacity: 0;
+}
+
+ul:hover li {
+  width: 10%;
+}
+
+ul:hover li:hover {
+  width: 80%;
+}
+
+ul:hover li:hover a {
+  background: #00000066;
+}
+
+ul:hover li:hover a * {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+image {
+  width: 100%;
+  height: 100%;
 }

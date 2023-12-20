@@ -28,7 +28,12 @@ export class OtpComponent {
 
   clickFail: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  secondsLeft: number = 120;
+  countdownInterval: any;
+
+  constructor(private authService: AuthService, private router: Router) {
+    this.startCountdown();
+  }
 
   foCusInput() {
     if (this.otp0.nativeElement.value.length === 1)
@@ -67,5 +72,22 @@ export class OtpComponent {
         }
       }
     );
+  }
+
+  startCountdown() {
+    this.countdownInterval = setInterval(() => {
+      this.secondsLeft--;
+
+      if (this.secondsLeft <= 0) {
+        clearInterval(this.countdownInterval);
+      }
+    }, 1000);
+  }
+
+  ngOnDestroy() {
+    // Cleanup to prevent memory leaks
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval);
+    }
   }
 }

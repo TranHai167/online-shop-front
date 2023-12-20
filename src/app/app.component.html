@@ -1,5 +1,16 @@
 <app-navbar *ngIf="loggedIn"></app-navbar>
 
-<div class="container">
+<div class="custom-container" style="min-height: 85vh;">
   <router-outlet></router-outlet>
 </div>
+
+<ng-container *ngIf="loggedIn">
+  <app-home></app-home>
+</ng-container>
+
+<ng-container class="bottom-component" *ngIf="(loadingService.isLoading$ | async)">
+  <app-spinner></app-spinner>
+</ng-container>
+
+
+

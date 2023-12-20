@@ -1,3 +1,30 @@
 .row {
   margin-right: 0;
 }
+
+.load-more {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 30px;
+  margin-top: 50px;
+}
+
+.button-styled {
+  width: 200px;
+  height: 50px;
+  background-color: #fff;
+  color: #2f2b2b;
+  font-family: 'Arial', sans-serif; /* Thay thế bằng font bạn muốn sử dụng */
+  font-size: 20px; /* Thay đổi kích thước font nếu cần */
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  outline: none; /* Loại bỏ đường viền khi nút được click */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button-styled:hover {
+  background-color: #2f2b2b; /* Màu khi hover */
+  color: #fff; /* Màu chữ khi hover */
+}

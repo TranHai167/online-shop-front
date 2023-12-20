@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10vh;
+  height: 7vh;
 }
 
 .otp-input {
@@ -20,4 +20,13 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.complete-button {
+  margin-top: 30px;
+  border-radius: 7px;
+  height: 40px;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: medium;
 }

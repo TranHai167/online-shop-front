@@ -1,49 +1,46 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" *ngIf="loggedIn">
-  <div class="container">
-    <a class="navbar-brand" routerLink="/">
-      <i class="fa fa-leaf" aria-hidden="true"></i>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
+<div class="fixed-top">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark" *ngIf="loggedIn" style="height: 90px">
+    <div class="container">
+      <div class="navbar-collapse collapse" id="navbarsExampleDefault" fxLayoutAlign="space-evenly">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/">Home</a>
+          <a class="nav-link" routerLink="/" [class.clicked]="">Sản phẩm</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/shopping-cart">Shopping Cart</a>
+          <a class="nav-link" routerLink="/coupons">Khuyến mãi</a>
         </li>
+        <a class="navbar-brand" routerLink="/">
+          <img src="/assets/symbol.png" alt="logo" loading="lazy">
+        </a>
         <li class="nav-item">
           <a class="nav-link" routerLink="/shopping-cart">
             <i class="bi bi-cart3" style="font-size:18px"></i>
-            <span class="badge badge-warning"  id='lblCartCount' *ngIf="quantity > 0">
+            <span class="badge badge-warning" id='lblCartCount' *ngIf="quantity > 0">
               {{ quantity }}
-            </span>
+            </span> Giỏ hàng
           </a>
         </li>
-      </ul>
-      <ul class="navbar-nav">
-        <ng-template #anonymousUser>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/login">Login</a>
+          <ng-template #anonymousUser>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/login">Login</a>
+            </li>
+          </ng-template>
+          <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item" style="padding-bottom: 2px">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+              {{ appUser.name }}
+            </a>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+              <span class="dropdown-item-custom" routerLink="/my-order">My Orders</span>
+              <ng-container *ngIf="appUser.admin">
+                <span class="dropdown-item-custom" routerLink="/admin/accounts">Manage Accounts</span>
+                <span class="dropdown-item-custom" routerLink="/admin/orders">Manage Orders</span>
+                <span class="dropdown-item-custom" routerLink="/admin/product">Manage Products</span>
+              </ng-container>
+              <span class="dropdown-item-custom" (click)="logout()">Log Out</span>
+            </div>
           </li>
-        </ng-template>
-        <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
-          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{ appUser.name }}
-          </a>
-          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" routerLink="/my-order">My Orders</a>
-            <ng-container *ngIf="appUser.admin">
-              <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
-              <a class="dropdown-item" routerLink="/admin/product">Manage Products</a>
-            </ng-container>
-            <a class="dropdown-item" (click)="logout()">Log Out</a>
-          </div>
-        </li>
-      </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</div>
+

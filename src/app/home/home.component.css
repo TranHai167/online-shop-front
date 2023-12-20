@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer {
+  font-family: 'Arial', sans-serif; /* Change the font as needed */
+  background-color: #2f2b2b; /* Black background color */
+  color: #fff; /* White text color */
+  padding: 20px 0; /* Adjust the padding as needed */
+}
+
+.container {
+  width: 80%; /* Adjust the width of the container as needed */
+  margin: 0 auto; /* Center the container */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-content p {
+  margin: 0;
+}
+
+

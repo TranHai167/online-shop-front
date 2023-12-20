@@ -1,3 +1,36 @@
 .circle-image {
   border-radius: 50%; /* Make the image circular by setting the border-radius to 50% */
 }
+
+.add-product {
+  background-color: #1f8037;
+  color: #fff;
+}
+
+.search-input {
+  background-color: #000;
+  color: #fff;
+  height: 50px;
+  font-family: AlfaSlabOneRegular, serif;
+  font-size: 16px;
+  width: 500px;
+  border-radius: 10px;
+}
+
+.table-data {
+  width: 100%;
+  color: #fff;
+  background-color: #373b38;
+}
+
+.product-section {
+  margin-bottom: 20px;
+}
+
+.product-section:hover {
+  background-color: #252625;
+}
+
+.transparent-bg {
+  height: 30px;
+}

@@ -1,10 +1,40 @@
 .thumbnail {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 100%;
   background-size: cover;
 }
 
+td {
+  margin-bottom: 10px;
+}
+
 .card {
   margin-bottom: 80px;
+  color: #ffffff;
+  background-color: transparent;
+  align-items: center;
+  min-width: 800px;
+}
+
+.table-section {
+  background-color: transparent;
+  width: 100%;
+  color: white; /* Optionally, set text color to white for better visibility */
+}
+
+.btn {
+  border-radius: 1.25rem;
+  background-color: rgb(60, 175, 75);
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #1f8037;
+  color: #e6ebe7;
+}
+
+.fake-row {
+  background-color: transparent;
+  width: 10px;
 }

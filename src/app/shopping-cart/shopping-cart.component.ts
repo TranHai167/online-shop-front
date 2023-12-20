@@ -11,13 +11,20 @@ import {Router} from "@angular/router";
 })
 export class ShoppingCartComponent implements OnInit {
   // @ts-ignore
-  cart$: Observable<ShoppingCart>;
+  cart: ShoppingCart;
 
   constructor(private shoppingCartService: ShoppingCartService,
               private router: Router) { }
 
   async ngOnInit() {
-    this.cart$ = await this.shoppingCartService.getCart();
+    let myCartObs = await this.shoppingCartService.getCart();
+    myCartObs.subscribe((cart) => {
+      let shoppingCartItems = cart.items.filter((item) => {
+        return item.quantity > 0;
+      });
+
+      this.cart = new ShoppingCart(shoppingCartItems);
+    })
   }
 
   clearCart() {

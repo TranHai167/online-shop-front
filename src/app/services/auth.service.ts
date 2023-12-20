@@ -45,8 +45,12 @@ export class AuthService {
     return this.httpClient.post<boolean>("http://localhost:8080/authenticate/verify-otp", otpNumber);
   }
 
-  createOtp(phoneNumber: string) {
-    return this.httpClient.post("http://localhost:8080/authenticate/create-otp", phoneNumber);
+  createOtp(email: string, phoneNumber: string) {
+    let body = {
+      'email': email,
+      'phoneNumber': phoneNumber
+    }
+    return this.httpClient.post<any>("http://localhost:8080/authenticate/create-otp", body);
   }
 
   register(user: any) {

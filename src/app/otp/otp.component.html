@@ -1,4 +1,4 @@
-Fill code we sent to your phone to continue!
+Fill code we sent to your phone here
 <div class="otp-container">
   <input type="text" class="otp-input" maxlength="1" id="otp1" #otp0 (input)="foCusInput()">
   <input type="text" class="otp-input" maxlength="1" id="otp2" #otp1 (input)="foCusInput()">
@@ -13,7 +13,7 @@ Fill code we sent to your phone to continue!
 </div>
 
 <div class="centered-button">
-  <button type="button" (click)="verifyOtp()">Complete</button>
+  <button type="button" (click)="verifyOtp()" class="complete-button" [disabled]="secondsLeft <= 0">Complete ({{ secondsLeft }}s)</button>
 </div>
 
 

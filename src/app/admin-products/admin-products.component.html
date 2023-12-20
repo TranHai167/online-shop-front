@@ -1,16 +1,17 @@
 <p>
-  <a routerLink="/admin/product/new" class="btn btn-primary"> New Product</a>
+  <a routerLink="/admin/product/new" class="btn add-product"> New Product</a>
 </p>
 <p>
   <input
     #query
     (keyup)="filter(query.value)"
-    type="text" class="form-control" placeholder="Search..."
+    type="text" class="search-input" placeholder="Search..."
   >
 </p>
-<table class="table">
-  <thead>
-  <tr>
+<table class="table-data">
+  <thead style="margin-bottom: 30px;">
+  <tr class="transparent-bg">
+    <th></th>
     <th>Item</th>
     <th>Price</th>
     <th></th>
@@ -18,15 +19,16 @@
   </thead>
 
   <tbody>
-  <tr *ngFor="let p of filteredProducts">
+  <tr *ngFor="let p of filteredProducts" class="product-section">
     <td>
       <img class="circle-image" src="{{p.imageUrl}}" width="60" height="60" style="margin-right: 20px">
-
+    </td>
+    <td>
       {{ p.title.toLocaleUpperCase() }}
     </td>
     <td>${{ p.price }}</td>
     <td>
-      <a [routerLink]="['/admin/product/', p.id]">Edit</a>
+      <i class="bi bi-pencil-square" [routerLink]="['/admin/product/', p.id]" style="cursor: pointer" matTooltip="Edit"></i>
     </td>
   </tr>
   </tbody>

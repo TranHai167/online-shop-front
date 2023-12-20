@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {LoaderService} from "./services/loader.service";
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'online-shop';
   loggedIn: boolean = !!localStorage.getItem('token');
+  constructor(public loadingService: LoaderService) {}
 }
