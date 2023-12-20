@@ -1,3 +1,23 @@
 .one-row {
   width: 100%;
 }
+
+.head-name {
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.not-link {
+  color: #fff;
+}
+
+.cell-data {
+  background-color: #212529;
+}
+
+a {
+  cursor: pointer;
+  color: #1f8037;
+  text-decoration: underline;
+}

@@ -50,6 +50,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import {LoadingInterceptor} from "./interceptors/loading.interceptor";
 import { ScrollTrackDirective } from './directives/scroll-track.directive';
 import { OneRowComponent } from './one-row/one-row.component';
+import {AuthInterceptor} from "./interceptors/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -118,7 +119,7 @@ import { OneRowComponent } from './one-row/one-row.component';
     MatTooltipModule
   ],
   providers: [AuthService, CategoryService, OrderService, ProductService, ShoppingCartService, UserService, {
-    provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+    provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
   }],
   bootstrap: [AppComponent]
 })
