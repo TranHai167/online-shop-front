@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   login(credentials: any): Observable<HttpResponse<AuthResponse>> {
-    return this.httpClient.post<HttpResponse<AuthResponse>>("http://localhost:8080/authenticate", credentials);
+    return this.httpClient.post<HttpResponse<AuthResponse>>("http://localhost:8080/api/authenticate", credentials);
   }
 
   getUserDetail(): Observable<AppUser> {
@@ -54,6 +54,6 @@ export class AuthService {
   }
 
   register(user: any) {
-    return this.httpClient.post<AuthResponse>("http://localhost:8080/authenticate/register", user);
+    return this.httpClient.post<AuthResponse>("http://localhost:8080/api/register", user);
   }
 }

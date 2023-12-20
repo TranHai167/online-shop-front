@@ -27,7 +27,7 @@ export class ShoppingCartService {
     cartId = localStorage.getItem('cartId');
     const params = new HttpParams()
       .set('cartId', cartId)
-    return this.httpClient.get<ShoppingCart>("http://localhost:8080/shopping-cart/getById", { params }).pipe(
+    return this.httpClient.get<ShoppingCart>("http://localhost:8080/api/shopping-cart/getById", { params }).pipe(
       map(x => new ShoppingCart(x.items))
     );
   }
@@ -55,7 +55,7 @@ export class ShoppingCartService {
     };
 
     this.sharedService.emitChangeQuantityEvent(0);
-    return this.httpClient.delete('http://localhost:8080/shopping-cart/clear-cart', httpOptions);
+    return this.httpClient.delete('http://localhost:8080/api/shopping-cart/clear-cart', httpOptions);
   }
 
 
@@ -81,12 +81,12 @@ export class ShoppingCartService {
     let cartId = localStorage.getItem('cartId');
     if (!cartId) cartId = '';
     let request: UpdateShoppingCartRequest = new UpdateShoppingCartRequest(cartId, product, change);
-    return this.httpClient.post<number>("http://localhost:8080/shopping-cart/update-cart", request, httpOptions);
+    return this.httpClient.post<number>("http://localhost:8080/api/shopping-cart/update-cart", request, httpOptions);
   }
 
   clearShoppingCart() {
     let cartId = localStorage.getItem('cartId');
     if (!cartId) cartId = '';
-    return this.httpClient.delete(`http://localhost:8080/shopping-cart/clear-shopping-cart/${cartId}`);
+    return this.httpClient.delete(`http://localhost:8080/api/shopping-cart/clear-shopping-cart/${cartId}`);
   }
 }
