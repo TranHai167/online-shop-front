@@ -21,6 +21,7 @@ export class AdminOrdersComponent {
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
+  columns: string[] = ['Customer', 'Date', 'Address', 'Phone number', ''];
 
   constructor
   (
@@ -66,5 +67,9 @@ export class AdminOrdersComponent {
     this.orderService.searchFieldsFunction(this.customerTerm, this.addressTerm, this.phoneNumberTerm, this.range.get('start')?.value?.getTime(), this.range.get('end')?.value?.getTime())
       .subscribe((order) => this.order = order
     )
+  }
+
+  scrolledBottom() {
+    console.log('Load more');
   }
 }

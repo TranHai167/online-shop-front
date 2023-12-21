@@ -1,20 +1,26 @@
-
-<div class="row-custom" fxLayout="column" [style.width]="elmWidth">
+<div class="row-custom" fxLayout="row wrap" fxLayoutAlign="start" id="style-1" [style.width]="elmWidth"
+     appScrollTrack
+     (scrolledToBottom)="scrolledBottom()"
+     [scrollingItems]="data?.length || 0"
+>
   <div class="head-name" fxLayout="row" fxFlex="100">
     <div *ngFor="let col of columns let i = index" fxFlex="{{100/colNumber}}">
       {{columns[i]}}
     </div>
   </div>
-    <div class="body-row" *ngFor="let row of data let i = index" fxFlex="100" fxLayout="row wrap">
-      <div *ngFor="let col of columns let i = index" fxFlex="{{100/colNumber}}" class="cell-data" >
-        <span class="not-link" *ngIf="i != columns.length-1 || !hasLinkLast; else hasLink"> {{data[i][col]}} </span>
-        <ng-template #hasLink>
-          <a class="is-link">
-            {{data[i][col]}}
-          </a>
-        </ng-template>
-      </div>
-      <div [style.height]="spacePerLines" fxFlex="100"></div>
+  <div fxLayout="100" style="width: 10px;"></div>
+  <div class="body-row" *ngFor="let row of data let i = index"
+       fxFlex="100" fxLayout="row wrap" style="height: 50px"
+  >
+    <div *ngFor="let col of columns let i = index" fxFlex="{{100/colNumber}}" class="cell-data">
+      <span class="not-link" *ngIf="i != columns.length-1 || !hasLinkLast; else hasLink"> {{data[i][col]}} </span>
+      <ng-template #hasLink>
+        <a class="is-link">
+          {{data[i][col]}}
+        </a>
+      </ng-template>
     </div>
+    <div [style.height]="spacePerLines" fxFlex="100"></div>
+  </div>
 </div>
 

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from "@angular/forms";
 import {ErrorStateMatcher} from "@angular/material/core";
+import {UserDto} from "../models/user-model";
+import {UserService} from "../services/user.service";
+import {take} from "rxjs/operators";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -35,24 +38,34 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./admin-accounts.component.css']
 })
 export class AdminAccountsComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
-  selected = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
+  options = [
+    { value: 'user', label: 'User' },
+    { value: 'admin', label: 'Admin' }
+  ];
+  users: UserDto[] = []
+  selectedValue: string = 'user';
+  columns: string[] = ['Email', 'Name', 'Role'];
 
-  selectFormControl = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
 
-  nativeSelectFormControl = new FormControl('valid', [
-    Validators.required,
-    Validators.pattern('valid'),
-  ]);
-
-  matcher = new MyErrorStateMatcher();
+  constructor(private userService: UserService) {
+    this.loadUsers();
+  }
 
   onEmailInputChange($event: Event) {
-
+    console.log('Email change');
   }
 
   onNameInputChange($event: Event) {
+    console.log('Name change');
+  }
 
+  scrolledBottom() {
+    console.log('Load more')
+  }
+
+  loadUsers() {
+    this.userService.getAllUsers().pipe(take(1)).subscribe((users) => {
+      this.users = users;
+    });
   }
 }

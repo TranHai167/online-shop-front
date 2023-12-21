@@ -1,4 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Order} from "../models/order";
+import {ShippingDTO} from "../models/shipping";
+import {ParseService} from "../services/parse.service";
 
 @Component({
   selector: 'app-one-row',
@@ -14,14 +17,15 @@ export class OneRowComponent implements OnInit {
   @Input('isLinkLast') hasLinkLast: boolean = false;
   colNumber: number = 0;
 
+
+  constructor(private parseService: ParseService) {
+  }
+
   ngOnInit(): void {
-    this.columns = ['Name', 'Age', 'Phone'];
-    this.data = [
-      {'Name': 'Hai', 'Age': 12, 'Phone': '20942309'},
-      {'Name': 'Hai', 'Age': 12, 'Phone': '20942309'},
-      {'Name': 'Hai', 'Age': 12, 'Phone': '20942309'},
-    ];
-    console.log('Oke')
     this.colNumber = this.columns.length;
+  }
+
+  scrolledBottom() {
+    console.log('Load more');
   }
 }

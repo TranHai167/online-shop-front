@@ -1,64 +1,69 @@
-<h1>System Accounts</h1>
+<h1 style="color: #fff">System Accounts</h1>
 <div style="margin-top: 50px;" fxLayout="column">
-  <h4>Filter</h4>
-  <div fxFlex="60" fxLayout="row" fxLayoutAlign="space-between">
+  <h4 style="color: #fff">Filter</h4>
+  <div fxFlex="70" fxLayout="row" fxLayoutAlign="start">
     <input
       #query1
       (input)="onEmailInputChange($event)"
       type="text" class="form-control" placeholder="Email..."
       style="margin-bottom: 20px"
-      fxFlex="30"
+      fxFlex="20"
     >
+    <div fxFlex="5"></div>
 
     <input
       #query2
       (input)="onNameInputChange($event)"
       type="text" class="form-control" placeholder="Name..."
       style="margin-bottom: 20px"
-      fxFlex="30"
+      fxFlex="20"
     >
+    <div fxFlex="5"></div>
 
-    <ng-container fxFlex="30">
-      <mat-form-field class="selection-sec">
-        <mat-label>Role</mat-label>
-        <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
-          <mat-option>Clear</mat-option>
-          <mat-option value="valid">Valid option</mat-option>
-          <mat-option value="invalid">Invalid option</mat-option>
-        </mat-select>
-        <mat-error *ngIf="selected.hasError('required')" >You must make a selection</mat-error>
-        <mat-error *ngIf="selected.hasError('pattern') && !selected.hasError('required')">Your selection is invalid</mat-error>
-      </mat-form-field>
-    </ng-container>
+    <div class="custom-select-wrapper">
+      <select class="custom-select" [(ngModel)]="selectedValue">
+        <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+      </select>
+    </div>
   </div>
 </div>
 
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-  </ng-container>
+<div style="height: 40px"></div>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-  </ng-container>
+<div class="custom-container" fxLayoutAlign="center">
+  <div class="row-custom-order" fxLayout="row wrap" fxLayoutAlign="start">
+    <div class="head-name" fxLayout="row" fxFlex="100">
+      <div fxFlex="8"></div>
+      <div *ngFor="let col of columns let i = index" fxFlex="25" >
+        {{columns[i]}}
+      </div>
+    </div>
+    <div fxFlex="100" fxLayout="row" style="height: 10px;"></div>
+    <div class="body-part"
+         appScrollTrack fxLayoutAlign="start"
+         (scrolledToBottom)="scrolledBottom()"
+         [scrollingItems]="users?.length || 0"
+         id="style-1">
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-  </ng-container>
+      <div class="body-row" *ngFor="let user of users let i = index"
+           fxFlex="100" fxLayout="row wrap" style="height: 50px"
+      >
+        <div fxFlex="8" class="cell-data"></div>
+        <div fxFlex="25" class="cell-data">
+        <span class="not-link">
+          {{user.userName}}
+        </span>
+        </div>
+        <div fxFlex="25" class="cell-data">
+          <span class="not-link">{{ user.email }}</span>
+        </div>
+        <div fxFlex="25" class="cell-data">
+          <span class="not-link">{{ user.role }}</span>
+        </div>
+        <div style="height: 10px;" fxLayout="row wrap" fxFlex="100"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
 

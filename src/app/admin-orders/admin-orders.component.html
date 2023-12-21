@@ -28,36 +28,51 @@
   </div>
 </div>
 
-<div>
+<div style="height: 20px"></div>
+<div class="custom-container" fxLayoutAlign="center">
+  <div class="row-custom-order" fxLayout="row wrap" fxLayoutAlign="start">
+    <div class="head-name" fxLayout="row" fxFlex="100">
+      <div fxFlex="5"></div>
+      <div *ngFor="let col of columns let i = index" fxFlex="20">
+        {{columns[i]}}
+      </div>
+    </div>
+    <div fxFlex="100" fxLayout="row" style="height: 10px;"></div>
+    <div class="body-part"
+         appScrollTrack fxLayoutAlign="start"
+         (scrolledToBottom)="scrolledBottom()"
+         [scrollingItems]="order?.length || 0"
+         id="style-1">
 
+      <div class="body-row" *ngFor="let order of order let i = index"
+           fxFlex="100" fxLayout="row wrap" style="height: 50px"
+      >
+        <div fxFlex="5" class="cell-data"></div>
+        <div fxFlex="20" class="cell-data">
+        <span class="not-link">
+          {{order.shipping.name}}
+        </span>
+        </div>
+        <div fxFlex="20" class="cell-data">
+          <span class="not-link">{{ order.orderDate | date }}</span>
+        </div>
+        <div fxFlex="20" class="cell-data">
+          <span class="not-link">{{ order.shipping.addressLine1 }}</span>
+        </div>
+        <div fxFlex="20" class="cell-data">
+          <span class="not-link">{{ order.shipping.city }}</span>
+        </div>
+        <div fxFlex="15" class="cell-data">
+          <a class="is-link" (click)="openDialog(order.orderId)"
+             style="cursor: pointer; color: #3aa94a">
+            Detail
+          </a>
+        </div>
+        <div style="height: 10px;" fxLayout="row wrap" fxFlex="100"></div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<table class="table">
-  <thead>
-  <tr>
-    <th>Customer</th>
-    <th>Date</th>
-    <th>Address</th>
-    <th>Phone number</th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let order of order">
-    <td>{{ order.shipping.name }}</td>
-    <td>{{ order.orderDate | date}}</td>
-    <td>{{ order.shipping.addressLine1}}</td>
-    <td>{{ order.shipping.city}}</td>
-    <td>
-      <a
-        (click)="openDialog(order.orderId)"
-        style="cursor: pointer; color: blue"
-      >View order</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
-
 
 
 

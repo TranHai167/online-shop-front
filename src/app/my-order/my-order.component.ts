@@ -15,6 +15,8 @@ export class MyOrderComponent {
   orders: Order[] = [];
 
   // @ts-ignore
+  columns: string[] = ['Name', 'Address', 'Date', ''];
+
   constructor(
     private authService: AuthService,
     private orderService: OrderService,
@@ -31,5 +33,9 @@ export class MyOrderComponent {
     this.dialog.open(ViewOrderComponent, {
       data: orderId
     });
+  }
+
+  scrolledBottom() {
+    console.log('Load more')
   }
 }

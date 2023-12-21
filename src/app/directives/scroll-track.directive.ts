@@ -21,7 +21,8 @@ export class ScrollTrackDirective {
     const height = this.el.nativeElement.offsetHeight;
     const scrollTop = this.el.nativeElement.scrollTop;
     const totalHeight = this.scrollingItems * this.el.nativeElement.children[0].offsetHeight;
-    if (scrollTop + height >= totalHeight && ! this.emited) {
+
+    if (scrollTop + height >= totalHeight && !this.emited) {
       this.emited = true;
       this.scrolledToBottom.emit();
     } else if (scrollTop + height < totalHeight) {
