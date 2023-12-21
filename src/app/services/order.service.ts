@@ -37,12 +37,11 @@ export class OrderService {
   }
 
   sendEmail(orderId: string, cartId: string | null) {
-    let payLoad = {
-      orderId: orderId,
-      cartId: cartId
-    }
+    const params = new HttpParams()
+      .set('orderId', orderId)
+      .set('cartId', cartId||'')
     console.log('sent email')
-    return this.httpClient.post<void>("http://localhost:8080/orders/send-email", payLoad);
+    return this.httpClient.get<void>("http://localhost:8080/orders/send-email", {params});
   }
 
   searchFieldsFunction(customerTerm: string, addressTerm: string, phoneNumberTerm: string, fromDate: number | undefined, toDate: number | undefined) {
