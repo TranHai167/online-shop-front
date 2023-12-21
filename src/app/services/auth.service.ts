@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   login(credentials: any): Observable<HttpResponse<AuthResponse>> {
-    return this.httpClient.post<HttpResponse<AuthResponse>>("http://localhost:8080/authenticate", credentials);
+    return this.httpClient.post<HttpResponse<AuthResponse>>("http://localhost:8080/api/authenticate", credentials);
   }
 
   getUserDetail(): Observable<AppUser> {
@@ -38,22 +38,23 @@ export class AuthService {
     userId = localStorage.getItem('cartId');
     const params = new HttpParams()
       .set('userId', userId);
-    return this.httpClient.get<AppUser>("http://localhost:8080/authenticate/get-user", {params});
+    return this.httpClient.get<AppUser>("http://localhost:8080/api/authenticate/get-user", {params});
   }
 
   verifyOtp(otpNumber: string) {
-    return this.httpClient.post<boolean>("http://localhost:8080/authenticate/verify-otp", otpNumber);
+    const params = new HttpParams()
+      .set('otp', otpNumber);
+    return this.httpClient.get<boolean>("http://localhost:8080/authenticate/verify-otp", {params});
   }
 
   createOtp(email: string, phoneNumber: string) {
-    let body = {
-      'email': email,
-      'phoneNumber': phoneNumber
-    }
-    return this.httpClient.post<any>("http://localhost:8080/authenticate/create-otp", body);
+    const params = new HttpParams()
+      .set('email', email)
+      .set('phoneNumber', phoneNumber);
+    return this.httpClient.get<any>("http://localhost:8080/authenticate/create-otp", {params});
   }
 
   register(user: any) {
-    return this.httpClient.post<AuthResponse>("http://localhost:8080/authenticate/register", user);
+    return this.httpClient.post<AuthResponse>("http://localhost:8080/api/register", user);
   }
 }
