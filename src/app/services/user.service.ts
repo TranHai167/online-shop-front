@@ -11,6 +11,6 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   getAllUsers() {
-    return this.httpClient.get<UserDto[]>("http://localhost:8080/authenticate/get-all-users")
+    return this.httpClient.get<UserDto[]>("http://localhost:8080/api/authenticate/get-all-users")
   }
 }

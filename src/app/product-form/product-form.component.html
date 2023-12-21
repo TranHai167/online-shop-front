@@ -35,7 +35,7 @@
 
       <div class="form-group" style="margin-top: 10px">
         <label for="imageUrl">ImageUrl</label>
-        <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl"  name="imageUrl" id="imageUrl" type="text" class="form-control" required>
+        <input #imageUrl="ngModel" [(ngModel)]="product.image_url" name="imageUrl" id="imageUrl" type="text" class="form-control" required>
       </div>
       <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
         ImageUrl is required
@@ -50,7 +50,7 @@
   <div class="col-md-1"></div>
   <div class="col-md-5">
     <div class="card" style="width: 18rem;">
-      <img [src]="product.imageUrl" class="card-img-top" *ngIf="product.imageUrl">
+      <img [src]="product.image_url" class="card-img-top" *ngIf="product.image_url">
       <div class="card-body">
         <h5 class="card-title">{{ product.title }}</h5>
         <p class="card-text">{{ product.price | currency:'USD': true}}</p>

@@ -44,7 +44,7 @@ export class AdminAccountsComponent {
   ];
   users: UserDto[] = []
   selectedValue: string = 'user';
-  columns: string[] = ['Email', 'Name', 'Role'];
+  columns: string[] = ['Name', 'Email', 'Role'];
 
 
   constructor(private userService: UserService) {
