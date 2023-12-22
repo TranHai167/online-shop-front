@@ -117,7 +117,7 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
     MatTooltipModule
   ],
   providers: [AuthService, CategoryService, OrderService, ProductService, ShoppingCartService, UserService, {
-    provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    provide: LoadingInterceptor, useClass: AuthInterceptor, multi: true
   }],
   bootstrap: [AppComponent]
 })

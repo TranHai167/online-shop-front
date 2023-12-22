@@ -75,7 +75,7 @@ export class AdminAccountsComponent {
 
   nameFilter(name: string) {
     this.filteredUsers = (name) ?
-      this.users.filter(p => p.userName.toLowerCase().includes(name.toLowerCase())) :
+      this.users.filter(p => p.name.toLowerCase().includes(name.toLowerCase())) :
       this.users;
   }
 
