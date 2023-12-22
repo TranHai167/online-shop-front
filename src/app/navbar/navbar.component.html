@@ -1,5 +1,5 @@
 <div class="fixed-top">
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark" *ngIf="loggedIn" style="height: 90px">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark" *ngIf="loggedIn && windowWidth > 767; else nothing" style="height: 90px">
     <div class="container">
       <div class="navbar-collapse collapse" id="navbarsExampleDefault" fxLayoutAlign="space-evenly">
         <li class="nav-item">
@@ -42,5 +42,16 @@
       </div>
     </div>
   </nav>
+  <ng-template #nothing>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" >
+      <div class="container">
+        <div class="navbar-collapse collapse" id="short" fxLayoutAlign="space-evenly">
+          <a class="navbar-brand" routerLink="/">
+            <img src="/assets/symbol-small.png" alt="logo" loading="lazy">
+          </a>
+        </div>
+      </div>
+    </nav>
+  </ng-template>
 </div>
 

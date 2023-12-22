@@ -9,3 +9,18 @@ button {
   transform: translate(-50%, -50%); /* Center the modal exactly */
   z-index: 1000;
 }
+
+
+.card {
+  background-color: #373b38;
+  color: #1f8037;
+  border-radius: 10px;
+}
+
+.table {
+  border-radius: 10px !important;
+}
+
+button {
+  background-color: #3aa94a;
+}

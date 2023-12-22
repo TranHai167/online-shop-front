@@ -38,3 +38,14 @@ td {
   background-color: transparent;
   width: 10px;
 }
+
+.empty-data {
+  margin-top: 100px;
+  padding: 50px 60px 80px 60px;
+  color: #1f8037;
+  opacity: 0.7;
+  font-size: 24px;
+  height: 100px;
+  border: 1px dashed #1f8037;
+  border-radius: 10px;
+}

@@ -4,7 +4,7 @@
   <div fxFlex="70" fxLayout="row" fxLayoutAlign="start">
     <input
       #query1
-      (input)="onEmailInputChange($event)"
+      (keyup)="emailFilter(query1.value)"
       type="text" class="form-control" placeholder="Email..."
       style="margin-bottom: 20px"
       fxFlex="20"
@@ -13,7 +13,7 @@
 
     <input
       #query2
-      (input)="onNameInputChange($event)"
+      (keyup)="nameFilter(query2.value)"
       type="text" class="form-control" placeholder="Name..."
       style="margin-bottom: 20px"
       fxFlex="20"
@@ -21,7 +21,7 @@
     <div fxFlex="5"></div>
 
     <div class="custom-select-wrapper">
-      <select class="custom-select" [(ngModel)]="selectedValue">
+      <select class="custom-select" [(ngModel)]="selectedValue" (change)="roleSelectChange($event)">
         <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
       </select>
     </div>
@@ -45,7 +45,7 @@
          [scrollingItems]="users?.length || 0"
          id="style-1">
 
-      <div class="body-row" *ngFor="let user of users let i = index"
+      <div class="body-row" *ngFor="let user of filteredUsers let i = index"
            fxFlex="100" fxLayout="row wrap" style="height: 50px"
       >
         <div fxFlex="8" class="cell-data"></div>
@@ -57,8 +57,13 @@
         <div fxFlex="25" class="cell-data">
           <span class="not-link">{{ user.email }}</span>
         </div>
-        <div fxFlex="25" class="cell-data">
+        <div fxFlex="20" class="cell-data">
           <span class="not-link">{{ user.role }}</span>
+        </div>
+        <div fxFlex="8" class="cell-data">
+          <i class="bi bi-trash3" (click)="deleteUser(user.userName, user.email)"
+             style="color: rgb(60, 175, 75);
+             cursor: pointer" matTooltip="Delete account"></i>
         </div>
         <div style="height: 10px;" fxLayout="row wrap" fxFlex="100"></div>
       </div>

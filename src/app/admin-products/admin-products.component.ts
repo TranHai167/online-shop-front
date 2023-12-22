@@ -29,5 +29,4 @@ export class AdminProductsComponent implements OnDestroy {
       this.products;
   }
 
-  protected readonly print = print;
 }

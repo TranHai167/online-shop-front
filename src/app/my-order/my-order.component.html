@@ -13,6 +13,7 @@
          appScrollTrack fxLayoutAlign="start"
          (scrolledToBottom)="scrolledBottom()"
          [scrollingItems]="orders?.length || 0"
+         *ngIf="orders && orders.length > 0; else noData"
          id="style-1">
 
       <div class="body-row" *ngFor="let order of orders let i = index"
@@ -39,5 +40,9 @@
         <div style="height: 10px;" fxLayout="row wrap" fxFlex="100"></div>
       </div>
     </div>
+    <ng-template #noData>
+      <div fxFlex="17"></div>
+      <div class="empty-data">You have no orders</div>
+    </ng-template>
   </div>
 </div>

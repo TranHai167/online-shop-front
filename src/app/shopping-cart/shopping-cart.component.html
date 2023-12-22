@@ -52,4 +52,8 @@
     </tr>
     </tfoot>
   </table>
+  <div *ngIf="!(cart.totalPrice > 0)">
+    <div></div>
+    <div class="empty-data">No items in cart</div>
+  </div>
 </div>

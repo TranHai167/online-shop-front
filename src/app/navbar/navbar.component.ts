@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {async, Observable, Subscription} from "rxjs";
 import {AuthService} from "../services/auth.service";
 import {ShoppingCartService} from "../services/shopping-cart.service";
@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   quantity: number = 0;
   loggedIn: boolean = true;
+  windowWidth: number = 0;
 
   constructor(
     private auth: AuthService,
@@ -37,6 +38,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
+    this.windowWidth = window.innerWidth;
     this.cart$ = await this.shoppingCartService.getCart();
     this.cart$.subscribe((res) => {
       for (let itemElement of res.items) {
@@ -56,5 +58,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // Unsubscribe to prevent memory leaks when the component is destroyed
     this.changeQuantitySubscription.unsubscribe();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.windowWidth = window.innerWidth;
+    // You can perform additional actions or trigger change detection here if needed
   }
 }

@@ -46,7 +46,6 @@ import { AdminAccountsComponent } from './admin-accounts/admin-accounts.componen
 import {MatSelectModule} from "@angular/material/select";
 import {MatTableModule} from "@angular/material/table";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import { SpinnerComponent } from './spinner/spinner.component';
 import {LoadingInterceptor} from "./interceptors/loading.interceptor";
 import { ScrollTrackDirective } from './directives/scroll-track.directive';
 import { OneRowComponent } from './one-row/one-row.component';
@@ -75,7 +74,6 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
     RegisterComponent,
     OtpComponent,
     AdminAccountsComponent,
-    SpinnerComponent,
     ScrollTrackDirective,
     OneRowComponent,
   ],

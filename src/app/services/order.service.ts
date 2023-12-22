@@ -44,13 +44,21 @@ export class OrderService {
     return this.httpClient.get<void>("http://localhost:8080/orders/send-email", {params});
   }
 
-  searchFieldsFunction(customerTerm: string, addressTerm: string, phoneNumberTerm: string, fromDate: number | undefined, toDate: number | undefined) {
+  searchFieldsFunction(customerTerm: string, addressTerm: string, phoneNumberTerm: string) {
     const params = new HttpParams()
       .set('customer', customerTerm)
       .set('address', addressTerm)
       .set('phoneNumber', phoneNumberTerm)
-      .set('fromDate', fromDate ? fromDate : 0)
-      .set('toDate', toDate ? toDate : 0)
     return this.httpClient.get<Order[]>("http://localhost:8080/api/orders/filter-orders", { params });
+  }
+
+  searchAllOrders(customerTerm: string, addressTerm: string, phoneNumberTerm: string, pageNumb: number, pageSize: number) {
+    const params = new HttpParams()
+      .set('customer', customerTerm)
+      .set('address', addressTerm)
+      .set('phoneNumber', phoneNumberTerm)
+      .set('pageNumb', pageNumb)
+      .set('pageSize', pageSize)
+    return this.httpClient.get<Order[]>("http://localhost:8080/api/orders/load-more-orders", { params });
   }
 }
