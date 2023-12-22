@@ -36,7 +36,7 @@ export class ShippingFormComponent implements OnInit {
     this.orderService.placeOrder(order).pipe(take(1), map(
       response => {
         // @ts-ignore
-        return response?.orderId;
+        return response?.id;
       }
     )).subscribe(
       (res) => {
