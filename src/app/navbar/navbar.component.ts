@@ -48,6 +48,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     this.auth.getUserDetail().pipe(take(1)).subscribe((data) => {
       this.appUser = new AppUser(data.name, data.admin);
+      localStorage.setItem('isAdmin', String(data.admin));
     })
   }
 

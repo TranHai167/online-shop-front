@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import {CanActivateFn, RouterModule} from "@angular/router";
+import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "./services/auth.service";
 import { NavbarComponent } from './navbar/navbar.component';
@@ -33,22 +33,18 @@ import { ViewOrderComponent } from './dialog/view-order/view-order.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatFormFieldModule} from "@angular/material/form-field";
 import {JsonPipe, NgIf, NgOptimizedImage} from "@angular/common";
-import {MatNativeDateModule} from "@angular/material/core";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AuthGuard} from "./services/auth-guard.service";
 import { RegisterComponent } from './register/register.component';
 import { OtpComponent } from './otp/otp.component';
 import {FlexModule} from "@angular/flex-layout";
 import { AdminAccountsComponent } from './admin-accounts/admin-accounts.component';
-import {MatSelectModule} from "@angular/material/select";
-import {MatTableModule} from "@angular/material/table";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {LoadingInterceptor} from "./interceptors/loading.interceptor";
 import { ScrollTrackDirective } from './directives/scroll-track.directive';
-import { OneRowComponent } from './one-row/one-row.component';
+import {RoleGuardService} from "./services/role-guard.service";
+import { NotFoundComponent } from './not-found/not-found.component';
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 
 @NgModule({
@@ -75,25 +71,25 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
     OtpComponent,
     AdminAccountsComponent,
     ScrollTrackDirective,
-    OneRowComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot([
       {path: '', component: ProductsComponent, canActivate: [AuthGuard]},
-      {path: 'test', component: OneRowComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent, canActivate: [AuthGuard]},
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path: 'order-success/:id', component: OrderSuccessComponent},
       {path: 'my-order', component: MyOrderComponent},
-      {path: 'admin/product/new', component: ProductFormComponent, canActivate: [AuthGuard]},
-      {path: 'admin/product/:id', component: ProductFormComponent, canActivate: [AuthGuard]},
-      {path: 'admin/product', component: AdminProductsComponent, canActivate: [AuthGuard]},
-      {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard]},
-      {path: 'admin/accounts', component: AdminAccountsComponent, canActivate: [AuthGuard]},
+      {path: 'admin/product/new', component: ProductFormComponent, canActivate: [AuthGuard, RoleGuardService]},
+      {path: 'admin/product/:id', component: ProductFormComponent, canActivate: [AuthGuard, RoleGuardService]},
+      {path: 'admin/product', component: AdminProductsComponent, canActivate: [AuthGuard, RoleGuardService]},
+      {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, RoleGuardService]},
+      {path: 'admin/accounts', component: AdminAccountsComponent, canActivate: [AuthGuard, RoleGuardService]},
+      {path: '**', component: NotFoundComponent },
     ]),
     HttpClientModule,
     FormsModule,
@@ -103,17 +99,12 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
-    MatDatepickerModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
     NgIf,
     JsonPipe,
-    MatNativeDateModule,
     BrowserAnimationsModule,
     FlexModule,
     NgOptimizedImage,
-    MatSelectModule,
-    MatTableModule,
     MatTooltipModule
   ],
   providers: [AuthService, CategoryService, OrderService, ProductService, ShoppingCartService, UserService, {

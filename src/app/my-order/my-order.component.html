@@ -12,7 +12,7 @@
     <div class="body-part"
          appScrollTrack fxLayoutAlign="start"
          (scrolledToBottom)="scrolledBottom()"
-         [scrollingItems]="orders?.length || 0"
+         [scrollingItems]="orders.length || 0"
          *ngIf="orders && orders.length > 0; else noData"
          id="style-1">
 

@@ -38,7 +38,7 @@
     <div class="body-part"
          appScrollTrack fxLayoutAlign="start"
          (scrolledToBottom)="scrolledBottom()"
-         [scrollingItems]="order?.length || 0"
+         [scrollingItems]="order.length || 0"
          id="style-1">
 
       <div class="body-row" *ngFor="let order of order let i = index"
