@@ -31,7 +31,10 @@ export class ShoppingCartComponent implements OnInit {
     this.shoppingCartService.clearShoppingCart().subscribe();
     this.router.navigate(['/']).then(() => {
       // Reload the current page
-      window.location.reload()
+      setTimeout(()=>{
+
+        window.location.reload()
+      },800)
     });
   }
 }

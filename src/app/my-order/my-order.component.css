@@ -21,6 +21,8 @@
 }
 
 .cell-data {
+  overflow-y: hidden;
+  height: 28px;
   background-color: #373b38;
 }
 

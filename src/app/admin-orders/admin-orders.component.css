@@ -46,6 +46,8 @@ input {
 
 .cell-data {
   background-color: #373b38;
+  height: 28px;
+    overflow: hidden;
 }
 
 .space-per-line {
