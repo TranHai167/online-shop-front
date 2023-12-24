@@ -4,6 +4,7 @@ body {
 }
 
 .site-footer {
+  margin-top: 250px;
   font-family: 'Arial', sans-serif; /* Change the font as needed */
   background-color: #2f2b2b; /* Black background color */
   color: #fff; /* White text color */

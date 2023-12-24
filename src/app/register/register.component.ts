@@ -1,7 +1,5 @@
-import {AfterViewInit, Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
-import {filter} from "rxjs/operators";
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {AuthService} from "../services/auth.service";
-import { AbstractControl, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -18,8 +16,7 @@ export class RegisterComponent implements AfterViewInit{
   inValidPhone: boolean = true;
   inValidEmail: boolean = false;
 
-  constructor(private authService: AuthService) {
-  }
+  constructor(private authService: AuthService) {}
 
   ngAfterViewInit() {
     // Get the initial width of the input field
@@ -40,8 +37,6 @@ export class RegisterComponent implements AfterViewInit{
       this.optRequired = true;
       this.fulfill = true;
       this.authService.createOtp(this.user.email, this.user.phone).subscribe((res) => {
-        console.log('Herre!!!')
-        console.log(res)
         if (res.errorCode == 402) {
           this.inValidEmail = true;
           return
@@ -64,7 +59,6 @@ export class RegisterComponent implements AfterViewInit{
   protected readonly blur = blur;
 
   completeTyping() {
-    console.log('complete typing' + this.user.phone)
     // @ts-ignore
     let valid = /^[0-9]{10}$/g.test(this.user.phone)
     this.inValidPhone = !valid;

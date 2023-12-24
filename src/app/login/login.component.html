@@ -6,16 +6,14 @@
           <div>
             <a href="#">
               <h2>Elite gradient</h2>
-              <p>Elevate your daily nourishment with our collection of exceptional milk products crafted with utmost care and dedication. At Online Shop, we take pride in delivering dairy excellence, offering a wide range of premium milk products that are as wholesome as they are delicious.</p>
-            </a>
+              <p>Elevate your daily nourishment with our collection of exceptional milk products crafted with utmost care. </p></a>
           </div>
         </li>
         <li>
           <div>
             <a href="#">
               <h2>Selective starch</h2>
-              <p>At Online Shop, we take pride in exploring the potential of starch gradients to elevate your dining experience. From delectable pastries to savory dishes, our menu features an array of culinary delights that highlight the diverse and fascinating world of starch gradients.
-                Indulge in the mesmerizing interplay of starch concentrations, carefully curated to delight your taste buds. Whether you're a fan of sweet treats or savory sensations, our starch gradient creations offer a symphony of flavors that cater to every palate.
+              <p>At Online Shop, we take pride in exploring the potential of starch gradients to elevate your dining experience.
               </p>
             </a>
           </div>
@@ -25,7 +23,7 @@
             <a href="#">
               <h2>Fresh vegetable</h2>
               <p>
-                Fresh fruits are nature's delicious and nutritious gifts, bursting with vibrant flavors, vibrant colors, and a plethora of health benefits. From orchards to farmers' markets, fresh fruits bring a touch of nature's sweetness to our tables. Whether enjoyed as a snack, incorporated into meals, or blended into refreshing beverages, these wholesome treats are a cornerstone of a balanced and healthy diet.</p>
+                Fresh fruits are nature's delicious and nutritious gifts, bursting with vibrant flavors, vibrant colors</p>
             </a>
           </div>
         </li>
@@ -36,11 +34,11 @@
     <div class="img-container" #image [style.height]="height" (mouseenter)="focusing()" (mouseleave)="focusing()">
       <a href="#" *ngIf="isFocused">
         <h2>About us</h2>
-        <p>At [Your Shop Name], we go beyond the ordinary to curate a shopping environment that is both inviting and customer-centric. Our well-organized aisles, knowledgeable staff, and a wide array of high-quality products ensure that your visit is not just a chore but an enjoyable experience. Navigating through our aisles becomes a journey of discovery, where you find not just groceries but inspiration for your culinary adventures.</p>
-        - Over 100 branches
-        - More 20 years experience
-        - Elitism gradient for products
-        - Verified quality
+        <p style="text-align: justify;">
+          At [Your Shop Name], we go beyond the ordinary to curate a shopping environment that is both inviting and customer-centric. Our well-organized aisles, knowledgeable staff, and a wide array of high-quality products ensure that your visit is not just a chore but an enjoyable experience. Navigating through our aisles becomes a journey of discovery, where you find not just groceries but inspiration for your culinary adventures.</p>
+        <p> ⭐ Over 100 branches </p>
+        <p> ⭐ More 20 years experience </p>
+        <p> ⭐ Verified quality </p>
       </a>s
     </div>
   </div>
@@ -55,8 +53,8 @@
       <input #mail="ngModel" type="email" style="width: 100%;"
              placeholder="Email" id="email" name="email" [(ngModel)]="email" required email (focus)="reauthorize()">
       <div class="alert alert-danger" style="height: 40px; padding-left: 10px; padding-bottom: 33px" *ngIf="mail.touched && mail.invalid">
-        <div [class.warning]="mail.errors?.['required']">Email is required.</div>
-        <div *ngIf="mail.errors?.['email']">Email form is incorrect.</div>
+        <div *ngIf="mail.errors?.['required']">Email is required.</div>
+        <div *ngIf="mail.errors?.['email']">Email form incorrect.</div>
       </div>
     </div>
 

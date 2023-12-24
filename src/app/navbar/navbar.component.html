@@ -1,5 +1,6 @@
 <div class="fixed-top">
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark" *ngIf="loggedIn && windowWidth > 767; else nothing" style="height: 90px">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark" *ngIf="loggedIn && windowWidth > 767; else nothing"
+       style="height: 90px">
     <div class="container">
       <div class="navbar-collapse collapse" id="navbarsExampleDefault" fxLayoutAlign="space-evenly">
         <li class="nav-item">
@@ -19,31 +20,31 @@
             </span> Giỏ hàng
           </a>
         </li>
-          <ng-template #anonymousUser>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/login">Login</a>
-            </li>
-          </ng-template>
-          <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item" style="padding-bottom: 2px">
-            <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">
-              {{ appUser.name }}
-            </a>
-            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-              <span class="dropdown-item-custom" routerLink="/my-order">My Orders</span>
-              <ng-container *ngIf="appUser.admin">
-                <span class="dropdown-item-custom" routerLink="/admin/accounts">Manage Accounts</span>
-                <span class="dropdown-item-custom" routerLink="/admin/orders">Manage Orders</span>
-                <span class="dropdown-item-custom" routerLink="/admin/product">Manage Products</span>
-              </ng-container>
-              <span class="dropdown-item-custom" (click)="logout()">Log Out</span>
-            </div>
+        <ng-template #anonymousUser>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Login</a>
           </li>
+        </ng-template>
+        <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item" style="padding-bottom: 2px">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            {{ appUser.name }}
+          </a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+            <span class="dropdown-item-custom" routerLink="/my-order">My Orders</span>
+            <ng-container *ngIf="appUser.admin">
+              <span class="dropdown-item-custom" routerLink="/admin/accounts">Manage Accounts</span>
+              <span class="dropdown-item-custom" routerLink="/admin/orders">Manage Orders</span>
+              <span class="dropdown-item-custom" routerLink="/admin/product">Manage Products</span>
+            </ng-container>
+            <span class="dropdown-item-custom" (click)="logout()">Log Out</span>
+          </div>
+        </li>
       </div>
     </div>
   </nav>
   <ng-template #nothing>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark" >
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container">
         <div class="navbar-collapse collapse" id="short" fxLayoutAlign="space-evenly">
           <a class="navbar-brand" routerLink="/">
@@ -51,6 +52,10 @@
           </a>
         </div>
       </div>
+      <button aria-controls="basic-navbar-nav" type="button" aria-label="Toggle navigation"
+              class="navbar-toggler collapsed" (click)="openDropDownList()">
+        <i class="bi bi-card-list"></i>
+      </button>
     </nav>
   </ng-template>
 </div>

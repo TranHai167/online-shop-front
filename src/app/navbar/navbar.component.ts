@@ -66,4 +66,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.windowWidth = window.innerWidth;
     // You can perform additional actions or trigger change detection here if needed
   }
+
+  openDropDownList() {
+
+  }
 }

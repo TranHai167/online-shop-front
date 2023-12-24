@@ -46,6 +46,8 @@ import { ScrollTrackDirective } from './directives/scroll-track.directive';
 import {RoleGuardService} from "./services/role-guard.service";
 import { NotFoundComponent } from './not-found/not-found.component';
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
+import { CouponsComponent } from './coupons/coupons.component';
+import { PassStrengthDirective } from './directives/pass-strength.directive';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,9 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
     AdminAccountsComponent,
     ScrollTrackDirective,
     NotFoundComponent,
+    CouponsComponent,
+    PassStrengthDirective,
+    PassStrengthDirective,
   ],
   imports: [
     BrowserModule,
@@ -84,12 +89,13 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path: 'order-success/:id', component: OrderSuccessComponent},
       {path: 'my-order', component: MyOrderComponent},
+      {path: 'coupons', component: CouponsComponent},
       {path: 'admin/product/new', component: ProductFormComponent, canActivate: [AuthGuard, RoleGuardService]},
       {path: 'admin/product/:id', component: ProductFormComponent, canActivate: [AuthGuard, RoleGuardService]},
       {path: 'admin/product', component: AdminProductsComponent, canActivate: [AuthGuard, RoleGuardService]},
       {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, RoleGuardService]},
       {path: 'admin/accounts', component: AdminAccountsComponent, canActivate: [AuthGuard, RoleGuardService]},
-      {path: '**', component: NotFoundComponent },
+      {path: '**', component: NotFoundComponent},
     ]),
     HttpClientModule,
     FormsModule,
@@ -110,6 +116,9 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
   providers: [AuthService, CategoryService, OrderService, ProductService, ShoppingCartService, UserService, {
     provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
   }],
+  exports: [
+    PassStrengthDirective
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
