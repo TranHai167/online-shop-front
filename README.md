@@ -1,7 +1,7 @@
 ![image](https://github.com/TranHai167/online-shop-front/assets/93305329/752c9bfe-c723-4350-bc28-f067929f2c55)<h1 align="center">Angular - The modern web developer's platform</h1>
 
 <p align="center">
-  <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.telerik.com%2Fblogs%2Fangular-dev-version-17-told-you-renaissance-here&psig=AOvVaw0LPRRcwuW4BLAlqRja4C6-&ust=1703478177849000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMjnsvGcp4MDFQAAAAAdAAAAABAQ" alt="angular-logo" width="120px" height="120px"/>
+  <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fangular&psig=AOvVaw0LPRRcwuW4BLAlqRja4C6-&ust=1703478177849000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMjnsvGcp4MDFQAAAAAdAAAAABAY" alt="angular-logo" width="120px" height="120px"/>
   <br>
   <em>Angular is a development platform for building mobile and desktop web applications
     <br> using TypeScript/JavaScript and other languages.</em>
