@@ -91,4 +91,12 @@ export class AdminAccountsComponent {
       this.users.filter(p => p.role.toLowerCase().includes(role.toLowerCase())) :
       this.users;
   }
+
+  isAdmin(role: string) {
+    if (role == 'ADMIN') {
+      return 0.7;
+    }
+
+    return 1;
+  }
 }
