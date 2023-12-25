@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Product} from "../models/product";
 
 @Injectable({
@@ -25,12 +25,17 @@ export class ProductService {
   }
 
   updateProduct(productId: number, product: Product) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
     let request = {
       productId: productId,
       product: product
     }
 
-    return this.httpClient.put("http://localhost:8080/api/products/update", request);
+    return this.httpClient.put("http://localhost:8080/api/products/update", request,httpOptions);
   }
 
   delete(productId: number) {

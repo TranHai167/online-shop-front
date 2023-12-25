@@ -6,12 +6,12 @@
   text-decoration: none;
   align-items: center;
   background-color: transparent;
-  color: #51525a
+  color: #fff
+
 }
 
 .sticky-top {
-  position: fixed;
-  top: 200px;
+  top: 132px;
 }
 
 .custom-item:hover {

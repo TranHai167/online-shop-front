@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from "@angular/forms";
-import {ErrorStateMatcher} from "@angular/material/core";
-import {UserDto} from "../models/user-model";
-import {UserService} from "../services/user.service";
-import {take} from "rxjs/operators";
-import {end} from "@popperjs/core";
-import {AuthService} from "../services/auth.service";
-import {AppUser} from "../models/app-user";
-import {Router} from "@angular/router";
+import { FormControl, FormGroupDirective, NgForm, Validators } from "@angular/forms";
+import { ErrorStateMatcher } from "@angular/material/core";
+import { UserDto } from "../models/user-model";
+import { UserService } from "../services/user.service";
+import { take } from "rxjs/operators";
+import { end } from "@popperjs/core";
+import { AuthService } from "../services/auth.service";
+import { AppUser } from "../models/app-user";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-admin-accounts',
@@ -26,8 +26,8 @@ export class AdminAccountsComponent {
 
 
   constructor(private userService: UserService,
-              private authService: AuthService,
-              private router: Router) {
+    private authService: AuthService,
+    private router: Router) {
     this.loadUsers();
   }
 
@@ -63,7 +63,10 @@ export class AdminAccountsComponent {
         this.userService.deleteUser(email).pipe(take(1)).subscribe();
         this.router.navigate(['/admin/accounts']).then(() => {
           // Reload the current page
-          window.location.reload()
+          setTimeout(() => {
+
+            window.location.reload()
+          }, 800)
         });
       }
     })

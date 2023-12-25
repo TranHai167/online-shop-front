@@ -3,7 +3,9 @@
   background-color: black;
   border: 1px #fff solid;
 }
-
+.card-title{
+  font-size: 18px!important;
+}
 input {
   border-radius: 5px;
   padding-left: 10px;

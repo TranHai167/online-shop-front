@@ -1,9 +1,9 @@
-import {Component, OnDestroy} from '@angular/core';
-import {CategoryService} from "../services/category.service";
-import {ProductService} from "../services/product.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Product} from "../models/product";
-import {take} from 'rxjs/operators';
+import { Component, OnDestroy } from '@angular/core';
+import { CategoryService } from "../services/category.service";
+import { ProductService } from "../services/product.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Product } from "../models/product";
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-form',
@@ -40,7 +40,10 @@ export class ProductFormComponent {
 
     this.router.navigate(['/admin/product']).then(() => {
       // Reload the current page
-      window.location.reload()
+      setTimeout(() => {
+
+        window.location.reload()
+      },800)
     });
   }
 
@@ -49,7 +52,10 @@ export class ProductFormComponent {
       this.productService.delete(this.id).subscribe();
       this.router.navigate(['/admin/product']).then(() => {
         // Reload the current page
-        window.location.reload()
+        setTimeout(() => {
+
+          window.location.reload()
+        },800)
       });
     }
   }

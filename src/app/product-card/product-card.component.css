@@ -1,12 +1,15 @@
 .card {
   margin-bottom: 30px;
+  height: 350px;
 }
 
 .card-footer {
   padding: 0;
   background: #000;
 }
-
+.card-title{
+  font-size: 18px;
+}
 .card-footer button {
   cursor: pointer;
   text-transform: uppercase;
@@ -14,6 +17,8 @@
 
 .card-img-top {
   position: relative;
+  height: 170px;
+
   overflow: hidden;
   cursor: pointer;
   background-color: #000000;
@@ -26,7 +31,7 @@
 
 .card-img-top img {
   width: 100%;
-  height: auto;
+  object-fit: cover;
   display: block;
 }
 
