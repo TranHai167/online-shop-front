@@ -41,13 +41,16 @@ export class AdminAccountsComponent {
     });
   }
 
-  deleteUser(name: string | undefined, email: string | undefined) {
+  deleteUser(name: string | undefined, email: string | undefined, role: string) {
     if (typeof email === 'undefined') {
       email = '';
     }
 
     if (name === undefined) {
       name = '';
+    }
+    if (role == 'ADMIN') {
+      return;
     }
 
     let appUser: AppUser;
